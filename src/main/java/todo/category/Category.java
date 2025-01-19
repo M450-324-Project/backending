@@ -49,12 +49,12 @@ public class Category {
      *
      * @param name the name to set
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     /**
-     * Category constructor
+     * Category constructor.
      *
      * @param id the id of the category
      */
