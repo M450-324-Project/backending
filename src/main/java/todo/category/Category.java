@@ -33,9 +33,26 @@ public class Category {
      * Category name.
      */
     @Column(unique = true, nullable = false)
-    String name;
+    private String name;
 
-    public Category(int id) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Category(final int id) {
+        this.id = id;
+    }
+
+    /**
+     * Sets the id of the category.
+     *
+     * @param id the id to set
+     */
+    public void setId(final int id) {
         this.id = id;
     }
 }
