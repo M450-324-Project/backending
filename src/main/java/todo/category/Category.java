@@ -53,6 +53,11 @@ public class Category {
         this.name = name;
     }
 
+    /**
+     * Category constructor
+     *
+     * @param id the id of the category
+     */
     public Category(final int id) {
         this.id = id;
     }
