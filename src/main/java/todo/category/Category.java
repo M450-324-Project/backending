@@ -27,11 +27,15 @@ public class Category {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    int id;
 
     /**
      * Category name.
      */
     @Column(unique = true, nullable = false)
-    private String name;
+    String name;
+
+    public Category(int id) {
+        this.id = id;
+    }
 }

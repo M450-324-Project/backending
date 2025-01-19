@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing categories.
@@ -57,6 +58,7 @@ public final class CategoryRestlet {
      */
     @PutMapping("/{id}")
     public Category updateCategory(@PathVariable final int id, @RequestBody final Category category) {
+
         Optional<Category> existingCategory = categoryService.getCategoryById(id);
 
         if (existingCategory.isPresent()) {
