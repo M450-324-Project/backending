@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Main application class for the Todo application.
  */
 @SpringBootApplication
-public final class TodoApplication {
-
-    private TodoApplication() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-    }
+public class TodoApplication {
 
     /**
      * Main method to run the Spring Boot application.
@@ -21,5 +17,4 @@ public final class TodoApplication {
     public static void main(final String[] args) {
         SpringApplication.run(TodoApplication.class, args);
     }
-
 }

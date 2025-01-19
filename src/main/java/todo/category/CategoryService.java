@@ -1,34 +1,65 @@
 package todo.category;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for managing categories.
+ */
 @Service
-public class CategoryService {
-    CategoryRepository categoryRepository;
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
+public final class CategoryService {
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    /**
+     * Retrieves all categories.
+     *
+     * @return a list of categories
+     */
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    public Optional<Category> getCategoryById(int id) {
+    /**
+     * Retrieves a category by its ID.
+     *
+     * @param id the category ID
+     * @return the category
+     */
+    public Optional<Category> getCategoryById(final int id) {
         return categoryRepository.findById(id);
     }
 
-    public Category saveCategory(Category category) {
+    /**
+     * Saves a new category.
+     *
+     * @param category the category to save
+     * @return the saved category
+     */
+    public Category saveCategory(final Category category) {
         return categoryRepository.save(category);
     }
 
-    public void deleteCategoryById(int id) {
+    /**
+     * Deletes a category by its ID.
+     *
+     * @param id the category ID
+     */
+    public void deleteCategoryById(final int id) {
         categoryRepository.deleteById(id);
     }
 
-    public Category updateCategory(Category newCategory) {
+    /**
+     * Updates an existing category.
+     *
+     * @param newCategory the new category data
+     * @return the updated category
+     */
+    public Category updateCategory(final Category newCategory) {
         return categoryRepository.save(newCategory);
     }
 }

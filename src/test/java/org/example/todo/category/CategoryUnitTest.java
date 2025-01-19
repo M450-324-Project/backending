@@ -56,7 +56,7 @@ public class CategoryUnitTest {
     void testUpdateCategory() {
         Category changer = new Category();
         changer.setName("test1");
-        changer.setId(4);
+        changer.setId(4L);
         Category newChange = changer;
         newChange.setName("test2");
 
@@ -73,7 +73,7 @@ public class CategoryUnitTest {
     void testDeleteEmployeeByLastname() {
         Category category = new Category();
         category.setName("delting");
-        category.setId(4);
+        category.setId(4L);
 
         when(categoryRepository.findById(4)).thenReturn(Optional.of(category));
 

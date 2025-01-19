@@ -1,13 +1,23 @@
 package todo.task;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.ManyToOne;
+import todo.category.Category;
+import todo.priority.Priority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import todo.category.Category;
-import todo.priority.Priority;
 
+/**
+ * Task entity for the Todo application.
+ */
 @Entity
 @Table(name = "task")
 @Getter
@@ -15,16 +25,33 @@ import todo.priority.Priority;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
+
+    /**
+     * Task ID.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    String name;
-    String description;
+    /**
+     * Task name.
+     */
+    private String name;
 
+    /**
+     * Task description.
+     */
+    private String description;
+
+    /**
+     * Task priority.
+     */
     @Enumerated(EnumType.ORDINAL)
-    Priority priority;
+    private Priority priority;
 
+    /**
+     * Task category.
+     */
     @ManyToOne
-    Category category;
+    private Category category;
 }

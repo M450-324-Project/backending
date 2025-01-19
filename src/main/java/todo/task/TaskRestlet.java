@@ -1,6 +1,5 @@
 package todo.task;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import todo.category.Category;
@@ -9,32 +8,59 @@ import todo.category.CategoryService;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * REST controller for managing tasks.
+ */
 @RestController
 @RequestMapping("/api/task")
-public class TaskRestlet {
+public final class TaskRestlet {
+
     @Autowired
     private TaskService taskService;
 
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * Retrieves all tasks.
+     *
+     * @return a list of tasks
+     */
     @GetMapping("")
     public List<Task> getAllTask() {
         return taskService.getAllTasks();
     }
 
+    /**
+     * Adds a new task.
+     *
+     * @param task the task to add
+     * @return the added task
+     */
     @PostMapping("")
-    public Task addTask(@RequestBody Task task) {
+    public Task addTask(@RequestBody final Task task) {
         return taskService.addTask(task);
     }
 
+    /**
+     * Deletes a task by its ID.
+     *
+     * @param id the task ID
+     */
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable int id) {
+    public void deleteTask(@PathVariable final int id) {
         taskService.deleteTask(id);
     }
 
+    /**
+     * Updates an existing task.
+     *
+     * @param id the task ID
+     * @param task the task to update
+     * @return the updated task
+     */
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable int id, @RequestBody Task task) {
+    public Task updateTask(@PathVariable final int id, @RequestBody final Task task) {
         Optional<Task> existingTask = taskService.getTaskById(id);
 
         if (existingTask.isPresent()) {
@@ -49,8 +75,14 @@ public class TaskRestlet {
         }
     }
 
+    /**
+     * Retrieves tasks by category.
+     *
+     * @param categoryId the category ID
+     * @return a list of tasks
+     */
     @GetMapping("/category/{categoryId}")
-    public List<Task> getTasksByCategory(@PathVariable Integer categoryId) {
+    public List<Task> getTasksByCategory(@PathVariable final Integer categoryId) {
         Optional<Category> category = categoryService.getCategoryById(categoryId);
 
         if (category.isPresent()) {
@@ -61,6 +93,11 @@ public class TaskRestlet {
         }
     }
 
+    /**
+     * Retrieves all tasks sorted by priority.
+     *
+     * @return a list of tasks
+     */
     @GetMapping("/sorted-by-priority")
     public List<Task> getAllTasksSortedByPriority() {
         return taskService.getAllTasksSortedByPriority();

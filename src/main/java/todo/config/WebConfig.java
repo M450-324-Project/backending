@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * Configuration class for web settings.
  */
 @Configuration
-public final class WebConfig {
+public class WebConfig {
 
     /**
      * Configures CORS settings.
@@ -23,7 +23,7 @@ public final class WebConfig {
             public void addCorsMappings(final CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", 
+                        .allowedMethods("GET", "POST", "PUT", "DELETE",
                                 "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(false);
