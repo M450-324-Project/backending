@@ -73,6 +73,7 @@ public final class TaskRestlet {
      * @return the updated task
      */
     @PutMapping("/{id}")
+    @SuppressWarnings("checkstyle:LineLength")
     public Task updateTask(@PathVariable final int id, @RequestBody final Task task) {
         Optional<Task> existingTask = taskService.getTaskById(id);
 
@@ -95,6 +96,7 @@ public final class TaskRestlet {
      * @return a list of tasks
      */
     @GetMapping("/category/{categoryId}")
+    @SuppressWarnings("checkstyle:LineLength")
     public List<Task> getTasksByCategory(@PathVariable final Integer categoryId) {
         Optional<Category> category = categoryService.getCategoryById(categoryId);
 

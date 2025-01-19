@@ -49,6 +49,7 @@ public class Category {
      *
      * @param name the name to set
      */
+    @SuppressWarnings("checkstyle:HiddenField")
     public void setName(final String name) {
         this.name = name;
     }
@@ -58,6 +59,7 @@ public class Category {
      *
      * @param id the id of the category
      */
+    @SuppressWarnings("checkstyle:HiddenField")
     public Category(final int id) {
         this.id = id;
     }
@@ -67,6 +69,7 @@ public class Category {
      *
      * @param id the id to set
      */
+    @SuppressWarnings("checkstyle:HiddenField")
     public void setId(final int id) {
         this.id = id;
     }

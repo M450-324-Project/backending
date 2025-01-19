@@ -65,6 +65,7 @@ public final class CategoryRestlet {
      * @return the updated category
      */
     @PutMapping("/{id}")
+    @SuppressWarnings("checkstyle:LineLength")
     public Category updateCategory(@PathVariable final int id, @RequestBody final Category category) {
 
         Optional<Category> existingCategory = categoryService.getCategoryById(id);

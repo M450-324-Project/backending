@@ -14,6 +14,7 @@ public class TodoApplication {
      *
      * @param args the command line arguments
      */
+    @SuppressWarnings("checkstyle:HideUtilityClassConstructor")
     public static void main(final String[] args) {
         SpringApplication.run(TodoApplication.class, args);
     }
