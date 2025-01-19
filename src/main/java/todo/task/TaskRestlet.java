@@ -15,6 +15,9 @@ import java.util.Optional;
 @RequestMapping("/api/task")
 public final class TaskRestlet {
 
+    /**
+     * Service for tasks.
+     */
     @Autowired
     private TaskService taskService;
 
@@ -26,7 +29,7 @@ public final class TaskRestlet {
      *
      * @return a list of tasks
      */
-    @GetMapping("")
+    @GetMapping
     public List<Task> getAllTask() {
         return taskService.getAllTasks();
     }
@@ -37,7 +40,7 @@ public final class TaskRestlet {
      * @param task the task to add
      * @return the added task
      */
-    @PostMapping("")
+    @PostMapping
     public Task addTask(@RequestBody final Task task) {
         return taskService.addTask(task);
     }

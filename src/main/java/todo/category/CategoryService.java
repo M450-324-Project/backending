@@ -12,6 +12,9 @@ import java.util.Optional;
 @Service
 public final class CategoryService {
 
+    /**
+     * Repository for categories.
+     */
     @Autowired
     private CategoryRepository categoryRepository;
 

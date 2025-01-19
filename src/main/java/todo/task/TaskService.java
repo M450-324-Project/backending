@@ -13,6 +13,9 @@ import java.util.Optional;
 @Service
 public final class TaskService {
 
+    /**
+     * Repository for tasks.
+     */
     @Autowired
     private TaskRepository taskRepository;
 

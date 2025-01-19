@@ -1,9 +1,9 @@
 package todo.category;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * REST controller for managing categories.
@@ -11,18 +11,18 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/category")
 public final class CategoryRestlet {
-    private final CategoryService categoryService;
-
-    public CategoryRestlet(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    /**
+     * Service for categories.
+     */
+    @Autowired
+    private CategoryService categoryService;
 
     /**
      * Retrieves all categories.
      *
      * @return a list of categories
      */
-    @GetMapping("")
+    @GetMapping
     public List<Category> getAllCategory() {
         return categoryService.getAllCategories();
     }
@@ -33,7 +33,7 @@ public final class CategoryRestlet {
      * @param category the category to add
      * @return the added category
      */
-    @PostMapping("")
+    @PostMapping
     public Category addCategory(@RequestBody final Category category) {
         return categoryService.saveCategory(category);
     }
