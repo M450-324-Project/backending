@@ -41,7 +41,7 @@ public class Category {
      * @return the name of the category
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
