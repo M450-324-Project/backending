@@ -35,10 +35,20 @@ public class Category {
     @Column(unique = true, nullable = false)
     private String name;
 
+    /**
+     * Gets the name of the category.
+     *
+     * @return the name of the category
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the category.
+     *
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
