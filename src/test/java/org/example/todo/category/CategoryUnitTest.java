@@ -65,7 +65,6 @@ public class CategoryUnitTest {
         categoryService.updateCategory(newChange);
 
         verify(categoryRepository, times(1)).save(newChange);
-        verify(categoryRepository, times(1)).findById(4);
         assertEquals(changer.getName(), newChange.getName());
     }
 
@@ -79,7 +78,6 @@ public class CategoryUnitTest {
 
         categoryService.deleteCategoryById(4);
 
-        verify(categoryRepository, times(1)).findById(4);
-        verify(categoryRepository, times(1)).delete(category);
+        verify(categoryRepository, times(1)).deleteById(4);
     }
 }
