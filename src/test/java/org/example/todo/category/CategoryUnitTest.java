@@ -69,7 +69,7 @@ public class CategoryUnitTest {
     }
 
     @Test
-    void testDeleteEmployeeByLastname() {
+    void testDeleteCategory() {
         Category category = new Category();
         category.setName("delting");
         category.setId(4);
