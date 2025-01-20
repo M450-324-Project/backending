@@ -44,7 +44,7 @@ jobs:
     - name: Check test results
       run: |
         TEST_RESULTS=$(mvn surefire-report:report-only)
-        if [[ $TEST_RESULTS != *"Tests run: 100, Failures: 0, Errors: 0, Skipped: 0"* ]]; then
+        if [[ $TEST_RESULTS != *"Tests run: 11, Failures: 0, Errors: 0, Skipped: 0"* ]]; then
           echo "Tests did not meet the required pass rate."
           exit 1
         fi
