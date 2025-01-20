@@ -35,7 +35,7 @@ public class TaskUnitTest {
     }
 
     @Test
-    void testFindAllCategory() {
+    void testFindAllTasks() {
         Task task = new Task();
         task.setName("Baking");
         when(taskRepository.findAll()).thenReturn(Collections.singletonList(task));
@@ -48,7 +48,7 @@ public class TaskUnitTest {
     }
 
     @Test
-    void testAddCategory() {
+    void testAddTask() {
         Task task = new Task();
         task.setName("Testing");
         taskService.addTask(task);
@@ -57,7 +57,7 @@ public class TaskUnitTest {
     }
 
     @Test
-    void testUpdateCategory() {
+    void testUpdateTask() {
         Task changer = new Task();
         changer.setName("test1");
         changer.setId(4);
@@ -73,7 +73,7 @@ public class TaskUnitTest {
     }
 
     @Test
-    void testDeleteEmployeeByLastname() {
+    void testDeleteTask() {
         Task task = new Task();
         task.setName("delting");
         task.setId(4);
