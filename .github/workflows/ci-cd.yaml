@@ -1,5 +1,6 @@
 name: CI/CD Pipeline
 
+# Sobald push auf main, main pullen und pipeline laufen lassen
 on:
   push:
     branches:
@@ -8,64 +9,69 @@ on:
     branches:
       - main
 
+# Jobs einrichten, ubuntu version wählen
 jobs:
   test:
     name: Test (Lint, Build, Test)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
+    # Schritte definieren
     steps:
+
+    # Code auschecken
     - name: Checkout code
       uses: actions/checkout@v2
 
+    # JDK 17 installieren
     - name: Set up JDK 17
       uses: actions/setup-java@v2
       with:
         java-version: '17'
         distribution: 'adopt'
 
+    # Maven packages cachen
     - name: Cache Maven packages
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
 
+    # Maven dependencies installieren
     - name: Install dependencies
       run: mvn install -DskipTests
 
+    # Linter ausführen
     - name: Run linter
       run: |
         mvn checkstyle:check || echo "Checkstyle errors ignored."
 
+    # Tests ausführen
     - name: Run tests
       run: mvn test
 
-    - name: Check test results
-      run: |
-        TEST_RESULTS=$(mvn surefire-report:report-only)
-        if [[ $TEST_RESULTS != *"Tests run: 100, Failures: 0, Errors: 0, Skipped: 0"* ]]; then
-          echo "Tests did not meet the required pass rate."
-          exit 1
-        fi
-
+    # Deployment simulieren (simples echo wenn successful)
     - name: Deploy to staging
       if: success()
       run: |
         echo "Deploying to staging environment..."
         # Add your deployment script/command here
 
+    # Testergebnisse veröffentlichen, damit mans z.B. auf github herunterladen kann
     - name: Publish test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-results
         path: target/surefire-reports
 
+    # GitHub Secrets verwenden (simulieren)
     - name: Use GitHub Secrets
       run: |
         echo "Using GitHub Secrets..."
         # Example: export API_KEY=${{ secrets.API_KEY }}
 
+    # Bei error ein echo ausgeben
     - name: Handle errors
       if: failure()
       run: |

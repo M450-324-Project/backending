@@ -2,8 +2,9 @@ package org.example.todo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import todo.TodoApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = TodoApplication.class)
 class TodoApplicationTests {
 
     @Test
